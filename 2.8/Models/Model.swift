@@ -5,33 +5,45 @@
 //  Created by Александр on 09.08.2022.
 //
 
+enum Discipline: String, CaseIterable {
+    case philosophy = "Философия"
+    case math = "Математика"
+    case physic = "Физика"
+}
 
 struct Question {
     let title: String
     let answer: Answer
-//    static func getQuestion() -> {
-//
-//    }
-//    static func getQuestion() -> Question {
-//        Question(typeOfDiscipline: .math, title: "How much will be if we multiply 2 and 2", answer: Answer(correct: "4", wrong: "5"))
-//    }
+    
+    static func getQuestions(_ discipline: Discipline) -> [Question] {
+        switch discipline {
+        case .philosophy:
+            return QuestionDataManager.shared.philosophyQuestions.shuffled()
+        case .math:
+            return QuestionDataManager.shared.mathQuestions.shuffled()
+        case .physic:
+            return QuestionDataManager.shared.physicQuestions.shuffled()
+        }
+    }
 }
 
 struct Answer {
     let correct: String
     let wrong: String
-    
-//    let description: String // tip that can explain correct answer
 }
-//
-//enum Discipline: String {
-//    case philosophy = "Философия"
-//    case math = "Математика"
-//    case physic = "Физика"
-//    
-//    
-//}
+
 struct GreatPerson {
     let name: String
     let image: String
+    
+    static func getGreatPersons(_ discipline: Discipline) -> [GreatPerson] {
+        switch discipline {
+        case .philosophy:
+            return GreatPersonDataManager.shared.philosophers.shuffled()
+        case .math:
+            return GreatPersonDataManager.shared.mathematicians.shuffled()
+        case .physic:
+            return GreatPersonDataManager.shared.physicians.shuffled()
+        }
+    }
 }

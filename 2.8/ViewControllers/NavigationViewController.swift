@@ -6,24 +6,37 @@
 //
 
 import UIKit
+protocol NavigationDisciplineDelegate {
+    func setDiscipline(with newDiscipline: Discipline)
+}
 
 class NavigationViewController: UINavigationController {
 
+    var discipline: Discipline!
+    var delegateForGreatPerson: GreatPersonDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("\(self)")
+    }
+
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let taskVC = segue.destination as? TaskViewController else { return }
+        taskVC.discipline = discipline
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension NavigationViewController: NavigationDisciplineDelegate {
+    func setDiscipline(with newDiscipline: Discipline) {
+        discipline = newDiscipline
     }
-    */
-
 }

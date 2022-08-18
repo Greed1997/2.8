@@ -9,4 +9,5 @@ import UIKit
 
 class Cell: UICollectionViewCell {
     
+    @IBOutlet var discipline: UILabel!
 }
