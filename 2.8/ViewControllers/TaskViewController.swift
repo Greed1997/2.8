@@ -20,6 +20,7 @@ class TaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Olga checks commits")
     }
 
     override func viewWillAppear(_ animated: Bool) {
