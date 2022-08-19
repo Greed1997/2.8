@@ -20,11 +20,11 @@ class TaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        taskLabel.text = discipline.rawValue
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        taskLabel.text = discipline.rawValue
         delegateForGreatPerson.setDiscipline(discipline)
         delegateForGreatPerson.setDiscipline(discipline)
         print(discipline.rawValue)

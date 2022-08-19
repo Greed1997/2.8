@@ -17,11 +17,10 @@ class GreatPersonsViewController: UITableViewController {
         super.viewDidLoad()
 
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        print(discipline.rawValue)
-//        print("\(self)")
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(discipline.rawValue)
+    }
 
     // MARK: - Table view data source
 
