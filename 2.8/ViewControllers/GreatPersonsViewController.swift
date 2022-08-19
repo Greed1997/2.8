@@ -31,13 +31,14 @@ class GreatPersonsViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "greatPerson", for: indexPath)
+        // Добавить фотографии и имена известных людей
+//        var content = cell.defaultContentConfiguration()
         
-        let contact = Discipline.allCases[indexPath.row]
-        
-        content.text = contact.rawValue
-        cell.contentConfiguration = content
+//        let contact = Discipline.allCases[indexPath.row]
+//
+//        content.text = contact.rawValue
+//        cell.contentConfiguration = content
         return cell
     }
     

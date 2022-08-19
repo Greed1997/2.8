@@ -11,12 +11,12 @@ import UIKit
 class TaskViewController: UIViewController {
 
     var discipline: Discipline!
-    var delegate: NavigationDisciplineDelegate!
+    var delegateForGreatPerson: GreatPersonDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationItem.title = discipline.rawValue
-    }
+        
+}
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("\(self)")

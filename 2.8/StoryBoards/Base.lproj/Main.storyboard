@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="1326" y="-48"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="ZBW-5C-rUd">
             <objects>
-                <viewController id="b1A-YI-Cqs" sceneMemberID="viewController">
+                <viewController id="b1A-YI-Cqs" customClass="SettingsViewController" customModule="__8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="42y-y9-F3Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,6 +140,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buttonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="YqB-DD-EVT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yip-DH-Uwf">
                                         <rect key="frame" x="0.0" y="108" width="95.5" height="44"/>
@@ -147,6 +150,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buttonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="pyl-OY-nX8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7I-ul-Bmy">
                                         <rect key="frame" x="0.0" y="216" width="95.5" height="44"/>
@@ -154,6 +160,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Button">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buttonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="9T4-51-pMV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -168,6 +177,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="15w-KD-pXe"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mathButton" destination="Yip-DH-Uwf" id="xHV-Ig-hSg"/>
+                        <outlet property="philosophyButton" destination="V9b-9c-tHD" id="tG0-Qb-FZs"/>
+                        <outlet property="physicButton" destination="e7I-ul-Bmy" id="qvp-2e-IYP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEM-bI-5E9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -292,7 +306,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dFr-PP-gh1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="greatPerson" id="dFr-PP-gh1">
                                 <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dFr-PP-gh1" id="l76-mV-RU2">

@@ -6,27 +6,33 @@
 //
 
 import UIKit
-
+protocol TaskDisciplineDelegate {
+    func setDiscipline(with newDiscipline: Discipline)
+}
 class TabBarViewController: UITabBarController {
 
     var discipline: Discipline!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        set()
     }
     
 
     
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func set() {
         guard let viewControllers = viewControllers else { return }
-        guard let navigationVC = viewControllers.first as? NavigationViewController else { return }
+        guard let navigationVC = viewControllers.first as? UINavigationController else { return }
+        guard let taskVC = navigationVC.topViewController as? TaskViewController else { return }
         guard let greatPersonsVC = viewControllers.last as? GreatPersonsViewController else { return }
         
-        navigationVC.discipline = discipline
-        navigationVC.delegateForGreatPerson = greatPersonsVC
+        taskVC.discipline = discipline
+        taskVC.delegateForGreatPerson = greatPersonsVC
     }
-    
 
+}
+extension TabBarViewController: TaskDisciplineDelegate {
+    func setDiscipline(with newDiscipline: Discipline) {
+        discipline = newDiscipline
+    }
 }

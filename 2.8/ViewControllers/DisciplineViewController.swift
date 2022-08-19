@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class DisciplineViewController: UICollectionViewController {
     
     let disciplines = Discipline.allCases
@@ -17,7 +15,6 @@ class DisciplineViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     
@@ -41,7 +38,6 @@ class DisciplineViewController: UICollectionViewController {
         
         cell.discipline.text = disciplines[indexPath.item].rawValue
         
-    
         return cell
     }
 
