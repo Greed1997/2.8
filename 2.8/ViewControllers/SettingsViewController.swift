@@ -20,11 +20,8 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtons(buttons: philosophyButton, mathButton, physicButton)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(discipline.rawValue)
+        setTitle(for: philosophyButton, mathButton, physicButton)
+      //  physicButton.description = Discipline.physic.
     }
     @IBAction func disciplineButtonPressed(sender: UIButton) {
         delegate.setDiscipline(Discipline(rawValue: sender.titleLabel?.text ?? "Физика") ?? .physic)
@@ -32,9 +29,13 @@ class SettingsViewController: UIViewController {
 
 }
 extension SettingsViewController {
-    func setButtons(buttons: UIButton...) {
-        for button in buttons {
-            button.titleLabel?.text = allDisciplines.removeFirst().rawValue
+    func setTitle(for buttons: UIButton...) {
+        buttons.forEach{ button in
+            switch button {
+            case philosophyButton: philosophyButton.setTitle(Discipline.philosophy.rawValue, for: .normal)
+            case mathButton: mathButton.setTitle(Discipline.math.rawValue, for: .normal)
+            default: physicButton.setTitle(Discipline.physic.rawValue, for: .normal)
+            }
         }
     }
 }

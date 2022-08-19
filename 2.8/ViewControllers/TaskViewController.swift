@@ -22,10 +22,12 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         taskLabel.text = discipline.rawValue
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         delegateForGreatPerson.setDiscipline(discipline)
         delegateForGreatPerson.setDiscipline(discipline)
+        print(discipline.rawValue)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
