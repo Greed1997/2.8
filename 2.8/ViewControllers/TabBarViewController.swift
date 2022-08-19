@@ -7,7 +7,7 @@
 
 import UIKit
 protocol TaskDisciplineDelegate {
-    func setDiscipline(with newDiscipline: Discipline)
+    func setDiscipline(_ newDiscipline: Discipline)
 }
 class TabBarViewController: UITabBarController {
 
@@ -16,15 +16,16 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         set()
-    }
+        print(discipline.rawValue)
+        }
     
 
     
     func set() {
         guard let viewControllers = viewControllers else { return }
         guard let navigationVC = viewControllers.first as? UINavigationController else { return }
-        guard let taskVC = navigationVC.topViewController as? TaskViewController else { return }
         guard let greatPersonsVC = viewControllers.last as? GreatPersonsViewController else { return }
+        guard let taskVC = navigationVC.topViewController as? TaskViewController else { return }
         
         taskVC.discipline = discipline
         taskVC.delegateForGreatPerson = greatPersonsVC
@@ -32,7 +33,7 @@ class TabBarViewController: UITabBarController {
 
 }
 extension TabBarViewController: TaskDisciplineDelegate {
-    func setDiscipline(with newDiscipline: Discipline) {
+    func setDiscipline(_ newDiscipline: Discipline) {
         discipline = newDiscipline
     }
 }

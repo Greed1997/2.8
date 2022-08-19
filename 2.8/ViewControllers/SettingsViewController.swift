@@ -6,32 +6,30 @@
 //
 
 import UIKit
-protocol SettingsDisciplineDelegate {
-    func setDiscipline(_ newDiscipline: Discipline)
-}
+
 class SettingsViewController: UIViewController {
-    var allDisciplines = Discipline.allCases
-    var discipline: Discipline!
+    
+    
     @IBOutlet var philosophyButton: UIButton!
     @IBOutlet var mathButton: UIButton!
     @IBOutlet var physicButton: UIButton!
     
+    var allDisciplines = Discipline.allCases
+    var discipline: Discipline!
+    var delegate: SettingsDisciplineDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setButtons(buttons: philosophyButton, mathButton, physicButton)
-        
     }
-    @IBAction func buttonPressed(sender: UIButton) {
-        dismiss(animated: true)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print(discipline.rawValue)
+    }
+    @IBAction func disciplineButtonPressed(sender: UIButton) {
+        delegate.setDiscipline(Discipline(rawValue: sender.titleLabel?.text ?? "Физика") ?? .physic)
     }
 
-}
-extension SettingsViewController: SettingsDisciplineDelegate {
-    func setDiscipline(_ newDiscipline: Discipline) {
-        discipline = newDiscipline
-    }
-    
-    
 }
 extension SettingsViewController {
     func setButtons(buttons: UIButton...) {

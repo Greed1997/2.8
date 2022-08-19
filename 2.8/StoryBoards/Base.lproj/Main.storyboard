@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--AboutUs-->
         <scene sceneID="Zdv-mR-CcW">
             <objects>
-                <viewController id="KW8-V3-mrN" sceneMemberID="viewController">
+                <viewController id="KW8-V3-mrN" userLabel="AboutUs" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IxT-Eh-iEW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="2118" y="682"/>
         </scene>
-        <!--Item 1-->
+        <!--Task-->
         <scene sceneID="j7g-5g-HNF">
             <objects>
-                <viewController id="m4E-U3-Pyd" customClass="TaskViewController" customModule="__8" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m4E-U3-Pyd" userLabel="Task" customClass="TaskViewController" customModule="__8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1MU-3r-hdE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,6 +110,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="taskLabel" destination="9we-ob-D3R" id="HJU-nf-mZM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7c-hh-AHl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,7 +144,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="buttonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="YqB-DD-EVT"/>
+                                            <action selector="disciplineButtonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="SBZ-9o-nbu"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yip-DH-Uwf">
@@ -151,7 +154,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="buttonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="pyl-OY-nX8"/>
+                                            <action selector="disciplineButtonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="TO9-PQ-lQb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7I-ul-Bmy">
@@ -161,7 +164,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="buttonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="9T4-51-pMV"/>
+                                            <action selector="disciplineButtonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="K64-uc-It2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -264,7 +267,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="discipline" destination="hfI-Ah-lGh" id="yhG-C1-jRG"/>
-                                    <segue destination="we9-r5-vGu" kind="presentation" identifier="showTabBar" modalPresentationStyle="fullScreen" id="66g-Fc-PLC"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -274,6 +276,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="kLz-ZU-CN5"/>
+                    <connections>
+                        <segue destination="we9-r5-vGu" kind="presentation" identifier="showTabBar" modalPresentationStyle="fullScreen" id="l6o-2k-j4L"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQx-nZ-3II" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -289,18 +294,18 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="aaR-WT-g3T" kind="relationship" relationship="viewControllers" id="fn5-DJ-jZt"/>
-                        <segue destination="D6c-F5-x9J" kind="relationship" relationship="viewControllers" id="9zo-ZL-s4S"/>
+                        <segue destination="D6c-F5-x9J" kind="relationship" relationship="viewControllers" id="pbt-m9-x3E"/>
+                        <segue destination="aaR-WT-g3T" kind="relationship" relationship="viewControllers" id="g2X-I3-fmz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EpA-f8-TLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-225" y="258"/>
         </scene>
-        <!--Item-->
+        <!--GreatPerons-->
         <scene sceneID="njn-uD-rJK">
             <objects>
-                <tableViewController id="aaR-WT-g3T" customClass="GreatPersonsViewController" customModule="__8" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="aaR-WT-g3T" userLabel="GreatPerons" customClass="GreatPersonsViewController" customModule="__8" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8Tr-JS-NiA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,7 +7,7 @@
 
 import UIKit
 protocol GreatPersonDelegate {
-    func getDiscipline(_ newDiscipline: Discipline)
+    func setDiscipline(_ newDiscipline: Discipline)
 }
 class GreatPersonsViewController: UITableViewController {
 
@@ -17,10 +17,11 @@ class GreatPersonsViewController: UITableViewController {
         super.viewDidLoad()
 
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("\(self)")
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print(discipline.rawValue)
+//        print("\(self)")
+//    }
 
     // MARK: - Table view data source
 
@@ -45,7 +46,7 @@ class GreatPersonsViewController: UITableViewController {
 
 }
 extension GreatPersonsViewController: GreatPersonDelegate {
-    func getDiscipline(_ newDiscipline: Discipline) {
+    func setDiscipline(_ newDiscipline: Discipline) {
      discipline = newDiscipline
     }
 }

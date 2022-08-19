@@ -18,15 +18,6 @@ class DisciplineViewController: UICollectionViewController {
     }
 
     
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showTabBar" {
-            guard let tabBarVC = segue.destination as? TabBarViewController else { return }
-            tabBarVC.discipline = discipline
-        }
-    }
-
      // MARK: UICollectionViewDataSource
 
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -45,7 +36,13 @@ class DisciplineViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         discipline = disciplines[indexPath.item]
-        performSegue(withIdentifier: "showTabBar", sender: nil)
+        performSegue(withIdentifier: "showTabBar", sender: discipline)
+    }
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let tabBarVC = segue.destination as? TabBarViewController else { return }
+        tabBarVC.discipline = sender as? Discipline
     }
 }
 extension DisciplineViewController: UICollectionViewDelegateFlowLayout {
