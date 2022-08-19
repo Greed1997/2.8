@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
       //  physicButton.description = Discipline.physic.
     }
     @IBAction func disciplineButtonPressed(sender: UIButton) {
-        delegate.setDiscipline(Discipline(rawValue: sender.titleLabel?.text ?? "Физика") ?? .physic)
+        delegate.setDiscipline(Discipline(rawValue: sender.currentTitle ?? "Физика") ?? .physic)
     }
 
 }
