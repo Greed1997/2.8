@@ -19,7 +19,7 @@ class GreatPersonsViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(discipline.rawValue)
+        print("\(self): \(discipline.rawValue)")
     }
 
     // MARK: - Table view data source

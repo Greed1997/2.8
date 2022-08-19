@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
     var allDisciplines = Discipline.allCases
     var discipline: Discipline!
     var delegate: SettingsDisciplineDelegate!
+    var delegateGreatPerson: GreatPersonDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func disciplineButtonPressed(sender: UIButton) {
         delegate.setDiscipline(Discipline(rawValue: sender.currentTitle ?? "Физика") ?? .physic)
+        delegateGreatPerson.setDiscipline(Discipline(rawValue: sender.currentTitle ?? "Физика") ?? .physic)
     }
 
 }

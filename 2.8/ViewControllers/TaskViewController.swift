@@ -27,12 +27,13 @@ class TaskViewController: UIViewController {
         taskLabel.text = discipline.rawValue
         delegateForGreatPerson.setDiscipline(discipline)
         delegateForGreatPerson.setDiscipline(discipline)
-        print(discipline.rawValue)
+        print("\(self): \(discipline.rawValue)")
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
         settingsVC.discipline = discipline
         settingsVC.delegate = self
+        settingsVC.delegateGreatPerson = delegateForGreatPerson
     }
 }
 extension TaskViewController: SettingsDisciplineDelegate {
