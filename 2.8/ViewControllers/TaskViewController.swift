@@ -12,6 +12,7 @@ protocol SettingsDisciplineDelegate {
 }
 class TaskViewController: UIViewController {
 
+    @IBOutlet weak var questionProgressLine: UIProgressView!
     @IBOutlet var taskLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var leftAnswerButton: UIButton!
@@ -74,13 +75,12 @@ extension TaskViewController {
     private func updateContent(){
         view.backgroundColor = UIColor.white
         let currentQuestion = questions[questionIndex]
+        
+        // mixing if answers
         leftIsCorrect = Bool.random()
         
-        print("update")
+        // setting titles of controls
         questionLabel.text = currentQuestion.title
-        print(currentQuestion.answer.correct)
-        print(leftIsCorrect)
-        
         if leftIsCorrect {
             leftAnswerButton.setTitle(currentQuestion.answer.correct, for: .normal)
             rightAnswerButton.setTitle(currentQuestion.answer.wrong, for: .normal)
@@ -88,6 +88,10 @@ extension TaskViewController {
             leftAnswerButton.setTitle(currentQuestion.answer.wrong, for: .normal)
             rightAnswerButton.setTitle(currentQuestion.answer.correct, for: .normal)
         }
+        
+        // Setting progress line
+        let totalProgress = Float(questionIndex) / Float(questions.count)
+        questionProgressLine.setProgress(totalProgress, animated: true)
     }
     
     private func updateWhenWrongAnswer(){

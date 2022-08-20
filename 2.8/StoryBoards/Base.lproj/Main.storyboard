@@ -142,6 +142,7 @@
                     <connections>
                         <outlet property="leftAnswerButton" destination="wvW-j9-ebK" id="pAw-N8-STe"/>
                         <outlet property="questionLabel" destination="LoG-03-FC0" id="wzd-qG-ysU"/>
+                        <outlet property="questionProgressLine" destination="Rjy-7Y-apO" id="oH9-g5-R1P"/>
                         <outlet property="rightAnswerButton" destination="diz-8z-e9B" id="xz1-Ev-Qyk"/>
                         <outlet property="taskLabel" destination="9we-ob-D3R" id="HJU-nf-mZM"/>
                     </connections>
