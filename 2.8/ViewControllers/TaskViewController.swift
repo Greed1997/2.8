@@ -3,7 +3,7 @@
 //  2.8
 //
 //  Created by Александр on 14.08.2022.
-//
+//  Updated by Olga Yurchuk on 20.08.2022
 
 import UIKit
 
@@ -20,32 +20,18 @@ class TaskViewController: UIViewController {
     var discipline: Discipline!
     var delegateForGreatPerson: GreatPersonDelegate!
     var delegateForTabBar: TaskDisciplineDelegate!
+    var leftIsCorrect: Bool = true
     
     private var questions: [Question] {
         Question.getQuestions(discipline)
     }
     private var questionIndex = 0
-//    private var currentQuestion: Question {
-//        questions[questionIndex]
-//    }
-    private var leftIsCorrect = Bool.random()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         taskLabel.text = discipline.rawValue
         delegateForGreatPerson.setDiscipline(discipline)
         updateContent()
-        
-//        print("\(self): \(discipline.rawValue)")
-//        print(currentQuestion)
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,12 +42,20 @@ class TaskViewController: UIViewController {
     }
 
     @IBAction func leftButtonPressed() {
-        nextQuestion()
+        if leftIsCorrect {
+            nextQuestion()
+        } else {
+            updateWhenWrongAnswer()
+        }
+        
     }
     
-    
     @IBAction func rightButtonPressed() {
-        nextQuestion()
+        if !leftIsCorrect {
+            nextQuestion()
+        } else {
+            updateWhenWrongAnswer()
+        }
     }
     
 }
@@ -78,11 +72,15 @@ extension TaskViewController: SettingsDisciplineDelegate {
 // MARK: -- Update view
 extension TaskViewController {
     private func updateContent(){
+        view.backgroundColor = UIColor.white
         let currentQuestion = questions[questionIndex]
+        leftIsCorrect = Bool.random()
+        
         print("update")
         questionLabel.text = currentQuestion.title
         print(currentQuestion.answer.correct)
         print(leftIsCorrect)
+        
         if leftIsCorrect {
             leftAnswerButton.setTitle(currentQuestion.answer.correct, for: .normal)
             rightAnswerButton.setTitle(currentQuestion.answer.wrong, for: .normal)
@@ -90,6 +88,11 @@ extension TaskViewController {
             leftAnswerButton.setTitle(currentQuestion.answer.wrong, for: .normal)
             rightAnswerButton.setTitle(currentQuestion.answer.correct, for: .normal)
         }
+    }
+    
+    private func updateWhenWrongAnswer(){
+        view.backgroundColor = UIColor.systemRed
+        questionLabel.text? += "\n \n НЕПРАВИЛЬНО! ВЫБЕРИ ДРУГОЙ ОТВЕТ!"
     }
 }
 
@@ -100,7 +103,9 @@ extension TaskViewController {
         
         if questionIndex < questions.count {
             updateContent()
-        } else { performSegue(withIdentifier: "showResults", sender: nil)}
+            return
+        }
+        performSegue(withIdentifier: "showResults", sender: nil)
     }
     
 }
