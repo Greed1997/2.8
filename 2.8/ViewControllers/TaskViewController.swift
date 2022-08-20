@@ -41,3 +41,8 @@ extension TaskViewController: SettingsDisciplineDelegate {
         discipline = newDiscipline
     }
 }
+extension TaskViewController {
+    private func settingsButtonPressed() {
+        
+    }
+}
