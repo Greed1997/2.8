@@ -6,37 +6,38 @@
 //
 
 import UIKit
-protocol SettingsDisciplineDelegate {
-    func setDiscipline(_ newDiscipline: Discipline)
-}
+
 class SettingsViewController: UIViewController {
-    var allDisciplines = Discipline.allCases
-    var discipline: Discipline!
+    
+    
     @IBOutlet var philosophyButton: UIButton!
     @IBOutlet var mathButton: UIButton!
     @IBOutlet var physicButton: UIButton!
     
+    var allDisciplines = Discipline.allCases
+    var discipline: Discipline!
+    var delegate: SettingsDisciplineDelegate!
+    var delegateGreatPerson: GreatPersonDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setButtons(buttons: philosophyButton, mathButton, physicButton)
-        
+        setTitle(for: philosophyButton, mathButton, physicButton)
+      //  physicButton.description = Discipline.physic.
     }
-    @IBAction func buttonPressed(sender: UIButton) {
-        dismiss(animated: true)
+    @IBAction func disciplineButtonPressed(sender: UIButton) {
+        delegate.setDiscipline(Discipline(rawValue: sender.currentTitle ?? "Физика") ?? .physic)
+        delegateGreatPerson.setDiscipline(Discipline(rawValue: sender.currentTitle ?? "Физика") ?? .physic)
     }
 
 }
-extension SettingsViewController: SettingsDisciplineDelegate {
-    func setDiscipline(_ newDiscipline: Discipline) {
-        discipline = newDiscipline
-    }
-    
-    
-}
 extension SettingsViewController {
-    func setButtons(buttons: UIButton...) {
-        for button in buttons {
-            button.titleLabel?.text = allDisciplines.removeFirst().rawValue
+    func setTitle(for buttons: UIButton...) {
+        buttons.forEach{ button in
+            switch button {
+            case philosophyButton: philosophyButton.setTitle(Discipline.philosophy.rawValue, for: .normal)
+            case mathButton: mathButton.setTitle(Discipline.math.rawValue, for: .normal)
+            default: physicButton.setTitle(Discipline.physic.rawValue, for: .normal)
+            }
         }
     }
 }
