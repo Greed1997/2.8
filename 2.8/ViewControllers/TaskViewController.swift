@@ -13,10 +13,19 @@ protocol SettingsDisciplineDelegate {
 class TaskViewController: UIViewController {
 
     @IBOutlet var taskLabel: UILabel!
-
+    @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var leftAnswerButton: UIButton!
+    @IBOutlet var rightAnswerButton: UIButton!
+    
     var discipline: Discipline!
     var delegateForGreatPerson: GreatPersonDelegate!
     var delegateForTabBar: TaskDisciplineDelegate!
+    
+    private var questions: [Question] {
+        Question.getQuestions(discipline)
+    }
+    var questionIndex = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +35,7 @@ class TaskViewController: UIViewController {
         super.viewWillAppear(animated)
         taskLabel.text = discipline.rawValue
         delegateForGreatPerson.setDiscipline(discipline)
-        delegateForGreatPerson.setDiscipline(discipline)
+        delegateForTabBar.setDiscipline(discipline)
         print("\(self): \(discipline.rawValue)")
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,7 +51,17 @@ extension TaskViewController: SettingsDisciplineDelegate {
     }
 }
 extension TaskViewController {
-    private func settingsButtonPressed() {
+//    private func settingsButtonPressed() {
+//
+//    }
+}
+extension TaskViewController {
+    private func updateUI() {
+        let currentQuestion = questions[questionIndex]
+        questionLabel.text = currentQuestion.title
+        
+    }
+    private func nextQuestion() {
         
     }
 }
