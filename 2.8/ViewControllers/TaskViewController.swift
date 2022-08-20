@@ -13,23 +13,27 @@ protocol SettingsDisciplineDelegate {
 class TaskViewController: UIViewController {
 
     @IBOutlet var taskLabel: UILabel!
-
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var leftAnswerButton: UIButton!
+    @IBOutlet weak var rightAnswerButton: UIButton!
+    
     var discipline: Discipline!
     var delegateForGreatPerson: GreatPersonDelegate!
     var delegateForTabBar: TaskDisciplineDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Olga checks commits")
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         taskLabel.text = discipline.rawValue
         delegateForGreatPerson.setDiscipline(discipline)
-        delegateForGreatPerson.setDiscipline(discipline)
+
         print("\(self): \(discipline.rawValue)")
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
         settingsVC.discipline = discipline
@@ -37,6 +41,8 @@ class TaskViewController: UIViewController {
         settingsVC.delegateGreatPerson = delegateForGreatPerson
     }
 }
+
+// MARK: -- Discipline Delegate
 extension TaskViewController: SettingsDisciplineDelegate {
     func setDiscipline(_ newDiscipline: Discipline) {
         discipline = newDiscipline

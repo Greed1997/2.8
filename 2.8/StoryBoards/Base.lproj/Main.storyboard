@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MFn-QP-nGT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MFn-QP-nGT">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -62,8 +63,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9we-ob-D3R">
-                                <rect key="frame" x="133" y="167" width="109.5" height="33.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discipline" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9we-ob-D3R">
+                                <rect key="frame" x="129" y="167" width="117.5" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,16 +101,24 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rjy-7Y-apO">
                                 <rect key="frame" x="0.0" y="44" width="375" height="4"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoG-03-FC0">
+                                <rect key="frame" x="167" y="234" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bcD-Bq-cBz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LoG-03-FC0" firstAttribute="top" secondItem="9we-ob-D3R" secondAttribute="bottom" constant="33.5" id="AVX-mG-qCS"/>
                             <constraint firstItem="bcD-Bq-cBz" firstAttribute="bottom" secondItem="xQN-nf-yog" secondAttribute="bottom" constant="150" id="DTH-rJ-XCT"/>
                             <constraint firstItem="Rjy-7Y-apO" firstAttribute="top" secondItem="bcD-Bq-cBz" secondAttribute="top" id="NXg-AJ-ezo"/>
                             <constraint firstItem="xQN-nf-yog" firstAttribute="centerX" secondItem="1MU-3r-hdE" secondAttribute="centerX" id="Nb0-Rj-kpr"/>
                             <constraint firstItem="bcD-Bq-cBz" firstAttribute="trailing" secondItem="Rjy-7Y-apO" secondAttribute="trailing" id="OEv-wQ-Uvs"/>
                             <constraint firstItem="Rjy-7Y-apO" firstAttribute="leading" secondItem="bcD-Bq-cBz" secondAttribute="leading" id="QaU-go-S5o"/>
                             <constraint firstItem="9we-ob-D3R" firstAttribute="centerX" secondItem="1MU-3r-hdE" secondAttribute="centerX" id="U0J-zp-Oyj"/>
+                            <constraint firstItem="LoG-03-FC0" firstAttribute="centerX" secondItem="1MU-3r-hdE" secondAttribute="centerX" id="cAN-sh-HH2"/>
                             <constraint firstItem="9we-ob-D3R" firstAttribute="centerY" secondItem="1MU-3r-hdE" secondAttribute="centerY" constant="-150" id="drE-QB-XXg"/>
                         </constraints>
                     </view>
@@ -127,6 +136,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="leftAnswerButton" destination="wvW-j9-ebK" id="pAw-N8-STe"/>
+                        <outlet property="questionLabel" destination="LoG-03-FC0" id="wzd-qG-ysU"/>
+                        <outlet property="rightAnswerButton" destination="diz-8z-e9B" id="xz1-Ev-Qyk"/>
                         <outlet property="taskLabel" destination="9we-ob-D3R" id="HJU-nf-mZM"/>
                     </connections>
                 </viewController>
