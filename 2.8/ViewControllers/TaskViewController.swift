@@ -21,6 +21,16 @@ class TaskViewController: UIViewController {
     var delegateForGreatPerson: GreatPersonDelegate!
     var delegateForTabBar: TaskDisciplineDelegate!
     
+    private var questions: [Question] {
+        Question.getQuestions(discipline)
+    }
+    private var questionIndex = 0
+//    private var currentQuestion: Question {
+//        questions[questionIndex]
+//    }
+    private var leftIsCorrect = Bool.random()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,8 +40,12 @@ class TaskViewController: UIViewController {
         super.viewWillAppear(animated)
         taskLabel.text = discipline.rawValue
         delegateForGreatPerson.setDiscipline(discipline)
-
-        print("\(self): \(discipline.rawValue)")
+        updateContent()
+        
+//        print("\(self): \(discipline.rawValue)")
+//        print(currentQuestion)
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,7 +54,19 @@ class TaskViewController: UIViewController {
         settingsVC.delegate = self
         settingsVC.delegateGreatPerson = delegateForGreatPerson
     }
+
+    @IBAction func leftButtonPressed() {
+        nextQuestion()
+    }
+    
+    
+    @IBAction func rightButtonPressed() {
+        nextQuestion()
+    }
+    
 }
+
+
 
 // MARK: -- Discipline Delegate
 extension TaskViewController: SettingsDisciplineDelegate {
@@ -48,3 +74,36 @@ extension TaskViewController: SettingsDisciplineDelegate {
         discipline = newDiscipline
     }
 }
+
+// MARK: -- Update view
+extension TaskViewController {
+    private func updateContent(){
+        let currentQuestion = questions[questionIndex]
+        print("update")
+        questionLabel.text = currentQuestion.title
+        print(currentQuestion.answer.correct)
+        print(leftIsCorrect)
+        if leftIsCorrect {
+            leftAnswerButton.setTitle(currentQuestion.answer.correct, for: .normal)
+            rightAnswerButton.setTitle(currentQuestion.answer.wrong, for: .normal)
+        } else {
+            leftAnswerButton.setTitle(currentQuestion.answer.wrong, for: .normal)
+            rightAnswerButton.setTitle(currentQuestion.answer.correct, for: .normal)
+        }
+    }
+}
+
+// MARK: -- other private methods
+extension TaskViewController {
+    private func nextQuestion() {
+        questionIndex += 1
+        
+        if questionIndex < questions.count {
+            updateContent()
+        } else { performSegue(withIdentifier: "showResults", sender: nil)}
+    }
+    
+}
+
+
+
