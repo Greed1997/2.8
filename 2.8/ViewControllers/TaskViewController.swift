@@ -22,16 +22,26 @@ class TaskViewController: UIViewController {
     var delegateForGreatPerson: GreatPersonDelegate!
     var delegateForTabBar: TaskDisciplineDelegate!
     var leftIsCorrect: Bool = true
+    var resultsCount: Int = 0
     
-    private var questions: [Question] {
-        Question.getQuestions(discipline)
-    }
+    private var questions: [Question] = []
     private var questionIndex = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegateForGreatPerson.setDiscipline(discipline)
+        questions = Question.getQuestions(discipline)
+        
+        taskLabel.text = discipline.rawValue
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        taskLabel.text = discipline.rawValue
-        delegateForGreatPerson.setDiscipline(discipline)
+
+    // When we reset discipline in settings
+        if taskLabel.text != discipline.rawValue {
+            questions = Question.getQuestions(discipline)
+        }
         updateContent()
     }
     
@@ -40,22 +50,31 @@ class TaskViewController: UIViewController {
         settingsVC.discipline = discipline
         settingsVC.delegate = self
         settingsVC.delegateGreatPerson = delegateForGreatPerson
+        settingsVC.result = resultsCount
+        settingsVC.questionsCount = questions.count
     }
 
     @IBAction func leftButtonPressed() {
         if leftIsCorrect {
+            resultsCount += 1
             nextQuestion()
         } else {
+            resultsCount -= 1
             updateWhenWrongAnswer()
+            leftAnswerButton.backgroundColor = UIColor.systemRed
+            leftAnswerButton.isEnabled.toggle()
         }
-        
     }
     
     @IBAction func rightButtonPressed() {
         if !leftIsCorrect {
+            resultsCount += 1
             nextQuestion()
         } else {
+            resultsCount -= 1
             updateWhenWrongAnswer()
+            rightAnswerButton.backgroundColor = UIColor.systemRed
+            rightAnswerButton.isEnabled.toggle()
         }
     }
     
@@ -73,14 +92,22 @@ extension TaskViewController: SettingsDisciplineDelegate {
 // MARK: -- Update view
 extension TaskViewController {
     private func updateContent(){
-        view.backgroundColor = UIColor.white
-        let currentQuestion = questions[questionIndex]
+        leftAnswerButton.backgroundColor = UIColor.systemYellow
+        rightAnswerButton.backgroundColor = UIColor.systemYellow
         
+        leftAnswerButton.isEnabled = true
+        rightAnswerButton.isEnabled = true
+        
+        
+        taskLabel.text = discipline.rawValue
+        
+        let currentQuestion = questions[questionIndex]
         // mixing if answers
         leftIsCorrect = Bool.random()
         
         // setting titles of controls
         questionLabel.text = currentQuestion.title
+        
         if leftIsCorrect {
             leftAnswerButton.setTitle(currentQuestion.answer.correct, for: .normal)
             rightAnswerButton.setTitle(currentQuestion.answer.wrong, for: .normal)
@@ -95,8 +122,9 @@ extension TaskViewController {
     }
     
     private func updateWhenWrongAnswer(){
-        view.backgroundColor = UIColor.systemRed
+        if !(questionLabel.text?.contains("НЕПРАВИЛЬНО!") ?? false) {
         questionLabel.text? += "\n \n НЕПРАВИЛЬНО! ВЫБЕРИ ДРУГОЙ ОТВЕТ!"
+        }
     }
 }
 
@@ -104,15 +132,15 @@ extension TaskViewController {
 extension TaskViewController {
     private func nextQuestion() {
         questionIndex += 1
-        
         if questionIndex < questions.count {
             updateContent()
             return
+        } else {
+            questionIndex = 0
         }
         performSegue(withIdentifier: "showResults", sender: nil)
     }
     
 }
-
 
 

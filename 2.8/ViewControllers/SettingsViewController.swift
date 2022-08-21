@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    
+    @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet var philosophyButton: UIButton!
     @IBOutlet var mathButton: UIButton!
     @IBOutlet var physicButton: UIButton!
@@ -18,11 +18,17 @@ class SettingsViewController: UIViewController {
     var discipline: Discipline!
     var delegate: SettingsDisciplineDelegate!
     var delegateGreatPerson: GreatPersonDelegate!
+    var result: Int!
+    var questionsCount: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitle(for: philosophyButton, mathButton, physicButton)
-      //  physicButton.description = Discipline.physic.
+        if result == 0 {
+            resultsLabel.text = "Вы пока ни на один вопрос правильно не ответили. Хотите сменить тему?"
+        } else {
+            resultsLabel.text = "Вы с первого раза ответили на \(String(result)) вопросов из \(String(questionsCount)) "
+        }
     }
     @IBAction func disciplineButtonPressed(sender: UIButton) {
         delegate.setDiscipline(Discipline(rawValue: sender.currentTitle ?? "Физика") ?? .physic)
