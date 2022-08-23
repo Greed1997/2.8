@@ -31,28 +31,15 @@ class TaskViewController: UIViewController {
         super.viewDidLoad()
         delegateForGreatPerson.setDiscipline(discipline)
         questions = Question.getQuestions(discipline)
-        
         taskLabel.text = discipline.rawValue
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-    // When we reset discipline in settings
-        if taskLabel.text != discipline.rawValue {
-            questions = Question.getQuestions(discipline)
-        }
         updateContent()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let settingsVC = segue.destination as? SettingsViewController else { return }
-        settingsVC.discipline = discipline
-        settingsVC.delegate = self
-        settingsVC.delegateGreatPerson = delegateForGreatPerson
-        settingsVC.result = resultsCount
-        settingsVC.questionsCount = questions.count
-    }
+
 
     @IBAction func leftButtonPressed() {
         if leftIsCorrect {
@@ -79,8 +66,6 @@ class TaskViewController: UIViewController {
     }
     
 }
-
-
 
 // MARK: -- Discipline Delegate
 extension TaskViewController: SettingsDisciplineDelegate {
@@ -131,6 +116,7 @@ extension TaskViewController {
 // MARK: -- other private methods
 extension TaskViewController {
     private func nextQuestion() {
+        print(resultsCount)
         questionIndex += 1
         if questionIndex < questions.count {
             updateContent()
@@ -140,7 +126,24 @@ extension TaskViewController {
         }
         performSegue(withIdentifier: "showResults", sender: nil)
     }
-    
 }
 
-
+// MARK -- Segues
+extension TaskViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let settingsVC = segue.destination as? SettingsViewController else { return }
+        settingsVC.discipline = discipline
+        settingsVC.delegate = self
+        settingsVC.delegateGreatPerson = delegateForGreatPerson
+        settingsVC.result = resultsCount
+        settingsVC.questionsCount = questions.count
+    }
+    
+    @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
+        questions = Question.getQuestions(discipline)
+        questionIndex = 0
+        resultsCount = 0
+        updateContent()
+    }
+    
+}

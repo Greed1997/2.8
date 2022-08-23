@@ -27,7 +27,7 @@ class SettingsViewController: UIViewController {
         if result == 0 {
             resultsLabel.text = "Вы пока ни на один вопрос правильно не ответили. Хотите сменить тему?"
         } else {
-            resultsLabel.text = "Вы с первого раза ответили на \(String(result)) вопросов из \(String(questionsCount)) "
+            resultsLabel.text = "Вы с первого раза ответили на \(String(result)) из \(String(questionsCount)) вопросов. Хотите сменить тему?"
         }
     }
     @IBAction func disciplineButtonPressed(sender: UIButton) {
