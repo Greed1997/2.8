@@ -81,7 +81,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="leftButtonPressed" destination="m4E-U3-Pyd" eventType="touchUpInside" id="8mz-5f-NbD"/>
+                                            <action selector="leftButtonPressed" destination="m4E-U3-Pyd" eventType="touchUpInside" id="jRL-R4-Pcn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diz-8z-e9B">
@@ -93,7 +93,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="rightButtonPressed" destination="m4E-U3-Pyd" eventType="touchUpInside" id="3nt-7U-MCY"/>
+                                            <action selector="rightButtonPressed" destination="m4E-U3-Pyd" eventType="touchUpInside" id="dE5-G2-acQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -159,22 +159,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xP-tw-Bxm">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xP-tw-Bxm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zha-81-8JM">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zha-81-8JM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQS-Je-h8e">
-                                <rect key="frame" x="80.5" y="315.5" width="214.5" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQS-Je-h8e">
+                                <rect key="frame" x="50" y="161" width="275" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="Pu6-fb-Nji">
-                                <rect key="frame" x="123.5" y="193.5" width="128.5" height="260"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pu6-fb-Nji">
+                                <rect key="frame" x="123.5" y="247.5" width="128.5" height="172"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9b-9c-tHD">
                                         <rect key="frame" x="0.0" y="0.0" width="128.5" height="44"/>
@@ -186,10 +184,11 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="disciplineButtonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="SBZ-9o-nbu"/>
+                                            <segue destination="Xzc-7D-2Or" kind="unwind" unwindAction="unwindFor:" id="RcI-Mw-vnh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yip-DH-Uwf">
-                                        <rect key="frame" x="0.0" y="108" width="128.5" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="128.5" height="44"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -198,10 +197,11 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="disciplineButtonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="TO9-PQ-lQb"/>
+                                            <segue destination="Xzc-7D-2Or" kind="unwind" unwindAction="unwindFor:" id="4q0-89-HMJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7I-ul-Bmy">
-                                        <rect key="frame" x="0.0" y="216" width="128.5" height="44"/>
+                                        <rect key="frame" x="0.0" y="128" width="128.5" height="44"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -210,6 +210,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="disciplineButtonPressedWithSender:" destination="b1A-YI-Cqs" eventType="touchUpInside" id="K64-uc-It2"/>
+                                            <segue destination="Xzc-7D-2Or" kind="unwind" unwindAction="unwindFor:" id="s9C-5U-tNk"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -218,16 +219,18 @@
                         <viewLayoutGuide key="safeArea" id="Qc1-Y6-bkT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dQS-Je-h8e" firstAttribute="centerY" secondItem="42y-y9-F3Z" secondAttribute="centerY" id="7Wc-Oq-Saz"/>
+                            <constraint firstItem="4xP-tw-Bxm" firstAttribute="centerX" secondItem="dQS-Je-h8e" secondAttribute="centerX" id="IIe-XE-Zgw"/>
                             <constraint firstItem="Pu6-fb-Nji" firstAttribute="centerX" secondItem="42y-y9-F3Z" secondAttribute="centerX" id="KWE-TW-6wp"/>
-                            <constraint firstItem="dQS-Je-h8e" firstAttribute="centerX" secondItem="42y-y9-F3Z" secondAttribute="centerX" id="bBE-Aa-Gqb"/>
+                            <constraint firstItem="4xP-tw-Bxm" firstAttribute="leading" secondItem="42y-y9-F3Z" secondAttribute="leadingMargin" constant="-16" id="Lcy-mP-9IR"/>
+                            <constraint firstItem="4xP-tw-Bxm" firstAttribute="trailing" secondItem="zha-81-8JM" secondAttribute="trailing" id="TRj-mz-t0c"/>
+                            <constraint firstItem="dQS-Je-h8e" firstAttribute="top" secondItem="4xP-tw-Bxm" secondAttribute="bottom" constant="117" id="V9G-t6-j2s"/>
+                            <constraint firstItem="dQS-Je-h8e" firstAttribute="leading" secondItem="Qc1-Y6-bkT" secondAttribute="leading" constant="50" id="Zbm-C4-pax"/>
                             <constraint firstItem="Pu6-fb-Nji" firstAttribute="centerY" secondItem="42y-y9-F3Z" secondAttribute="centerY" id="fDh-Ba-HhM"/>
+                            <constraint firstItem="Qc1-Y6-bkT" firstAttribute="trailing" secondItem="dQS-Je-h8e" secondAttribute="trailing" constant="50" id="i8e-kV-IhG"/>
+                            <constraint firstItem="4xP-tw-Bxm" firstAttribute="top" secondItem="zha-81-8JM" secondAttribute="top" id="kdd-xv-zay"/>
+                            <constraint firstItem="4xP-tw-Bxm" firstAttribute="leading" secondItem="zha-81-8JM" secondAttribute="leading" id="pFF-bz-ctM"/>
+                            <constraint firstItem="4xP-tw-Bxm" firstAttribute="top" secondItem="42y-y9-F3Z" secondAttribute="topMargin" constant="-44" id="xhc-VF-fm7"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Pu6-fb-Nji"/>
-                            </mask>
-                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="15w-KD-pXe"/>
@@ -236,9 +239,11 @@
                         <outlet property="mathButton" destination="Yip-DH-Uwf" id="xHV-Ig-hSg"/>
                         <outlet property="philosophyButton" destination="V9b-9c-tHD" id="tG0-Qb-FZs"/>
                         <outlet property="physicButton" destination="e7I-ul-Bmy" id="qvp-2e-IYP"/>
+                        <outlet property="resultsLabel" destination="dQS-Je-h8e" id="vEb-YG-qHE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEM-bI-5E9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Xzc-7D-2Or" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2118" y="-48"/>
         </scene>
