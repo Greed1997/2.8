@@ -39,11 +39,11 @@ struct GreatPerson {
     static func getGreatPersons(_ discipline: Discipline) -> [GreatPerson] {
         switch discipline {
         case .philosophy:
-            return GreatPersonDataManager.shared.philosophers.shuffled()
+            return GreatPersonDataManager.shared.philosophers
         case .math:
-            return GreatPersonDataManager.shared.mathematicians.shuffled()
+            return GreatPersonDataManager.shared.mathematicians
         case .physic:
-            return GreatPersonDataManager.shared.physicians.shuffled()
+            return GreatPersonDataManager.shared.physicians
         }
     }
 }
