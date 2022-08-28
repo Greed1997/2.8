@@ -16,9 +16,6 @@ class GreatPersonsViewController: UITableViewController {
         GreatPerson.getGreatPersons(discipline)
     }
     
-    private var greatPersons: [[GreatPerson]] = []
-    // MARK: - Позже додумать как удалиться от хардкодинга, экстеншин или гет добавить к енаму
-    private let sectionNames = ["Философия", "Математика", "Физика"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +59,4 @@ extension GreatPersonsViewController: GreatPersonDelegate {
      discipline = newDiscipline
     }
     
-    private func getInfoFromDataStorage() {
-        greatPersons.append(GreatPersonDataManager.shared.philosophers)
-        greatPersons.append(GreatPersonDataManager.shared.mathematicians)
-        greatPersons.append(GreatPersonDataManager.shared.physicians)
-    }
 }
