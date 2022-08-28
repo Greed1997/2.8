@@ -16,6 +16,10 @@ class GreatPersonsViewController: UITableViewController {
         GreatPerson.getGreatPersons(discipline)
     }
     
+    private var greatPersons: [[GreatPerson]] = []
+    // MARK: - Позже додумать как удалиться от хардкодинга, экстеншин или гет добавить к енаму
+    private let sectionNames = ["Философия", "Математика", "Физика"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
@@ -26,6 +30,7 @@ class GreatPersonsViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         greatPersons.count
@@ -38,6 +43,7 @@ class GreatPersonsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "greatPerson", for: indexPath)
         var content = cell.defaultContentConfiguration()
+
         
         content.text = greatPersons.map({ $0.name })[indexPath.row]
         content.image = UIImage(named: greatPersons.map({ $0.image })[indexPath.row])
@@ -54,5 +60,11 @@ class GreatPersonsViewController: UITableViewController {
 extension GreatPersonsViewController: GreatPersonDelegate {
     func setDiscipline(_ newDiscipline: Discipline) {
      discipline = newDiscipline
+    }
+    
+    private func getInfoFromDataStorage() {
+        greatPersons.append(GreatPersonDataManager.shared.philosophers)
+        greatPersons.append(GreatPersonDataManager.shared.mathematicians)
+        greatPersons.append(GreatPersonDataManager.shared.physicians)
     }
 }
