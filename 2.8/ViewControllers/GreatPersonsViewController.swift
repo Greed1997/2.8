@@ -20,6 +20,7 @@ class GreatPersonsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
+        tableView.tableFooterView = UIView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,5 +59,4 @@ extension GreatPersonsViewController: GreatPersonDelegate {
     func setDiscipline(_ newDiscipline: Discipline) {
      discipline = newDiscipline
     }
-    
 }

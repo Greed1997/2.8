@@ -16,12 +16,10 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         set()
-        print(discipline.rawValue)
         }
     
-
-    
     func set() {
+        
         guard let viewControllers = viewControllers else { return }
         guard let navigationVC = viewControllers.first as? UINavigationController else { return }
         guard let greatPersonsVC = viewControllers.last as? GreatPersonsViewController else { return }

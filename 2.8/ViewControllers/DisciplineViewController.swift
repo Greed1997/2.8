@@ -12,12 +12,6 @@ class DisciplineViewController: UICollectionViewController {
     let disciplines = Discipline.allCases
     var discipline: Discipline!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    
      // MARK: UICollectionViewDataSource
 
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

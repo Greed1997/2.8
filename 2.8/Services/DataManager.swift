@@ -46,3 +46,13 @@ class GreatPersonDataManager {
     
     private init() {}
 }
+class CreatorsDataManager {
+    static let shared = CreatorsDataManager()
+    
+    let creators = [
+        Creator(name: "Ольга Юрчук", phone: "+79137047495", mail: "olga.yourchooke@gmail.com"),
+        Creator(name: "Евгений Тян", phone: nil, mail: "Jizn'ZaGitaru@gmail.com"),
+        Creator(name: "Александр Иванцов", phone: "+79045041472", mail: "ivancov.n.a.p@gmail.com")
+    ]
+}
+
